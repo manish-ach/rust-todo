@@ -15,7 +15,7 @@ impl TodoList {
     }
 
     fn insert_item(&mut self, title: String) {
-        let mut id: u16 = self.items.len() as u16 + 1;
+        let id: u16 = self.items.len() as u16 + 1;
         let new_item = Todo {
             id,
             title: title.clone(),
@@ -60,7 +60,7 @@ fn main() {
         println!("3. Complete Tasks");
         print!("-> ");
 
-        io::stdout().flush();
+        io::stdout().flush().unwrap();
         let mut choice = String::new();
         io::stdin()
             .read_line(&mut choice)
@@ -73,7 +73,7 @@ fn main() {
         match choice {
             1 => {
                 println!("Enter the name of the new item:- ");
-                io::stdout().flush();
+                io::stdout().flush().unwrap();
                 let mut title = String::new();
                 io::stdin()
                     .read_line(&mut title)
@@ -84,7 +84,7 @@ fn main() {
             3 => {
                 println!("Enter id of the task to be set completed");
                 print!("-> ");
-                io::stdout().flush();
+                io::stdout().flush().unwrap();
                 let mut id = String::new();
                 io::stdin().read_line(&mut id).expect("error reading id");
                 let id: u16 = match id.trim().parse() {
